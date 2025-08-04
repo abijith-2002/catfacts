@@ -5,9 +5,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Apply global background and text color via CSS variables for theme support */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+/* Ensure modal overlays and dialogs (if used) respect theme colors */
+dialog, .modal, .popup {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Style scrollbars for dark mode */
+body::-webkit-scrollbar {
+  width: 12px;
+  background: var(--bg-secondary);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 8px;
+}
+
+/* Firefox */
+body {
+  scrollbar-color: var(--border-color) var(--bg-secondary);
+  scrollbar-width: thin;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-radius: 4px;
+  padding: 0.15em 0.33em;
+  transition: background 0.3s, color 0.3s;
 }
