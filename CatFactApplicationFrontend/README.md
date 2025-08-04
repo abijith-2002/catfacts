@@ -29,19 +29,35 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ## Customization
 
-### Colors
+### Colors & Themes
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+The main brand and dark theme colors are defined as CSS variables in `src/App.css`:
 
+Dark theme is now the global default. You can switch to light mode with the theme switcher (<kbd>☀️ Light</kbd> button).
+See `:root` and `[data-theme="dark"]` blocks for dark colors, and `[data-theme="light"]` for light theme overrides.
+
+Example:
 ```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+:root, [data-theme="dark"] {
+  --bg-primary: #18191b;
+  --bg-secondary: #22252b;
+  --text-primary: #f7f7fa;
+  --text-secondary: #70cffc;
+  --border-color: #2a2d33;
+  --button-bg: #0070f3;
+  --button-text: #f9f9f9;
+}
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #222944;
+  --text-secondary: #5b7a99;
+  --border-color: #d8dee8;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
 }
 ```
+For best results when adding new UI, use `var(--bg-primary)`, `var(--text-primary)`, etc., so changes automatically respect user theme.
 
 ### Components
 
